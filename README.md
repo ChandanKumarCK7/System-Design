@@ -1,2 +1,2 @@
 # System-Design
-the repository will be focused on implementing key concepts in system design.
+repository will just focused on implementing key concepts in system design.
