@@ -41,3 +41,49 @@
 //    in order to reduce load on load balancer just have a snapshor of instances running for Posts microservice so that
 //    gateway can directly call that instance from snapshot, make sure to update snapshot every 10 seconds.
 //
+
+//
+//
+//
+//
+//
+//
+//
+//    so how does that netflix usually seamlessly provide content without buffer
+//    1- routing the request sent from client
+//
+//
+//    lets say that the user will search for netflix.com then what happens is that ISP will route request to some cache that is between
+//    that ISP and netflix server
+//
+//    usually these cahces are helpful, there are multiple ISPs in worls so for each country they probably provide a cache so that
+//    when request will be made from india then the cache in india will be hit instead of cache in the america to improve latency
+//
+//    2- so how they provide seamless video after routing request to cache?
+//    so as part of that cache they configure to send frames based on categorizing movie, so netflix usually categorizes movie as sparse/dense
+//
+//    if the movie is sparse - people will probably just skip in between so netflix sends few frames at a time
+//    if the movie will be dense - people will be continously watched so netflix sends many frames that will be continusly there
+//
+
+
+//Factory Method -
+//    create class such as vehicle as either abstract or as interface
+//    then provide multiple implementations for that such as car, bus.class
+//
+//Singleton -
+//    create class as singleton if you want single instance of that class to exist in runtime
+//    perfect example would be database connection pool because if anyone wants to connect to db, the singleton class will be source
+//    contact and that provides a connection
+//
+//Observer -
+//    pattern can be used to notify user for changes
+//    maybe that can be said like in zomato we will have order tracking that can be perfect example
+//    just create an interface for that and implement for different functionalities
+//    maybe just like think of OrderStatus that can be of noticaion panel view, in app view so create two classes
+//    that implement OrderStatus interface.
+//
+//Decorator -
+//    pattern can be used to just add topup features on top of concrete classes
+//    such as discounts, offers in the amazon
+//
