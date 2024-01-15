@@ -1,2 +1,2 @@
 # System-Design
-repository will just focus on implementing key concepts in system design only.
+one stop repository to focus on LLD + HLD for Interviews and Fun.
