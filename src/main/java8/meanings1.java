@@ -87,3 +87,22 @@
 //    pattern can be used to just add topup features on top of concrete classes
 //    such as discounts, offers in the amazon
 
+//    Adapter
+//if u want one entity to behave like another entity we use a mediator in between adapter
+//    for ex - you want a cable of usb-c to work like hdmi cable then what can be done is use a HDMI adapter in between
+//
+//    or maybe there is a bird interface and a toyduck interface so bird can makr sound and touduck can make squaks
+//    but if u forcefully want toyDuck to make sounds like Bird we have to use birdAdapter
+//
+//    refer - https://www.geeksforgeeks.org/adapter-pattern/
+//    BirdAdapter implements ToyDuck{
+//        Bird bird;
+//        BirdAdapter(Bird bird){
+//            this.bird = bird;
+//        }
+//
+//        @override public void squeak(){
+//            bird.makeSound();
+//        }
+//    }
+
