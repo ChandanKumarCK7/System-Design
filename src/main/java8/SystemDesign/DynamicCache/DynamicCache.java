@@ -7,24 +7,25 @@ package SystemDesign.DynamicCache;
 // starting off with LRU and LFU
 
 
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
 
+class CacheNode<T>{
+    T v;
 
-
-class CacheNode{
-    int v;
-
-    public CacheNode(int v) {
+    public CacheNode(T v) {
         this.v = v;
     }
 }
-abstract class EvictionPolicy{
-    public abstract CacheNode get();
-    public abstract void put();
+abstract class EvictionPolicy<T>{
+    public abstract CacheNode<T> get();
+    public abstract void put(CacheNode<T> cacheNode);
 
     public abstract boolean contains();
 }
 
-class LFU extends EvictionPolicy{
+class LFU<T> extends EvictionPolicy<T{
 
     @Override
     public CacheNode get() {
@@ -32,7 +33,7 @@ class LFU extends EvictionPolicy{
     }
 
     @Override
-    public void put() {
+    public void put(CacheNode<T> cacheNode) {
 
     }
 
@@ -51,7 +52,7 @@ class LFU extends EvictionPolicy{
     }
 }
 
-class LRU extends EvictionPolicy{
+class LRU<T> extends EvictionPolicy<T>{
 
     @Override
     public CacheNode get() {
@@ -59,7 +60,7 @@ class LRU extends EvictionPolicy{
     }
 
     @Override
-    public void put() {
+    public void put(CacheNode<T> cacheNode) {
 
     }
 
@@ -93,12 +94,13 @@ class LRU2LFU extends StorageTransfer{
     }
 }
 
-class CacheManager{
-    static EvictionPolicy evictionPolicy;
-    static Object cache;
+class CacheManager<T>{
+    private EvictionPolicy<T> evictionPolicy;
     static Object helperCache;
     static CacheManager cacheManager;
     static StorageTransfer storageTransfer;
+    private CacheNode<T> cacheNode;
+
 
     private CacheManager(){
 
@@ -129,15 +131,30 @@ class CacheManager{
             storageTransfer.convertDSBasedOnPolicy();
             this.setEvictionPolicy(evictionPolicy);
         }
+    }
 
-
-
+    public void put(CacheNode<T> cacheNode){
+        evictionPolicy.put(cacheNode);
     }
 }
+
+class GlobalCache<T>{
+    static Object cache;
+
+    public GlobalCache(Deque<CacheNode<T>> cache) {
+        this.cache = cache;
+    }
+
+    public GlobalCache(HashMap<>){
+        
+    }
+}
+
 public class DynamicCache {
     public static void main(String[] args){
 
         CacheManager cacheManger = CacheManager.getInstance();
+        GlobalCache globalCache = new GlobalCache(new LinkedList<>());
         cacheManger.setEvictionPolicy(new LFU());
 
         cacheManger.setLimit(5);
